@@ -1,6 +1,9 @@
 import 'package:desafio_grupal_2/pop_up.dart';
 import 'package:flutter/material.dart';
 
+import 'enum_type.dart';
+import 'pop_up_card.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -25,7 +28,46 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: PopUp(state: 1,),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  void _save() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return PopUpCard();
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: MaterialButton(
+          onPressed: _save,
+          padding: const EdgeInsets.all(12),
+          child: Text("Guardar"),
+          color: Colors.blueAccent,
+        ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+//commint de prueba
