@@ -20,7 +20,7 @@ class CustomButton extends StatefulWidget {
     super.key,
     required this.text,
     this.height = 60,
-    this.width = 20,
+    this.width = double.infinity,
     this.backgroundColor = Colors.teal,
     this.textColor = Colors.white,
     this.borderColor = Colors.transparent,

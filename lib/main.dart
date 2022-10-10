@@ -1,8 +1,9 @@
 import 'package:desafio_grupal_2/pop_up.dart';
 import 'package:flutter/material.dart';
 
+import 'custom_button.dart';
 import 'enum_type.dart';
-import 'pop_up_card.dart';
+import 'pop_up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -65,7 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Touch(PopUpCardtype a) {
       widget.last_touched = a;
-      print("Me tocaron");
     }
 
     return Scaffold(
@@ -93,8 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
               backgroundColor: Colors.green,
             ),
           ]),
-
-          //CustomButton(text:"Aceptar",),
+          /* CustomButton(
+            text: "Aceptar",
+          ),*/
 
           MaterialButton(
             onPressed: _save,
