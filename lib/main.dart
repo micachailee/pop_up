@@ -1,6 +1,10 @@
 import 'package:desafio_grupal_2/pop_up.dart';
 import 'package:flutter/material.dart';
 
+import 'custom_button.dart';
+import 'enum_type.dart';
+import 'pop_up.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,19 +17,97 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: PopUp(state: 1,),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
+
+class MyHomePage extends StatefulWidget {
+  PopUpCardtype last_touched = PopUpCardtype.correcto;
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  void _save() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return PopUp(state: widget.last_touched);
+          //return PopUpCard();
+        });
+  }
+
+  /*@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: MaterialButton(
+          onPressed: _save,
+          padding: const EdgeInsets.all(12),
+          child: Text("Guardar"),
+          color: Colors.blueAccent,
+        ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }*/
+  @override
+  Widget build(BuildContext context) {
+    Touch(PopUpCardtype a) {
+      widget.last_touched = a;
+    }
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(children: [
+          Row(children: [
+            FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  Touch(PopUpCardtype.incorrecto);
+                });
+              },
+              backgroundColor: Colors.red,
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  Touch(PopUpCardtype.correcto);
+                });
+              },
+              backgroundColor: Colors.green,
+            ),
+          ]),
+          /* CustomButton(
+            text: "Aceptar",
+          ),*/
+
+          MaterialButton(
+            onPressed: _save,
+            padding: const EdgeInsets.all(12),
+            child: Text("Guardar"),
+            color: Colors.blueAccent,
+          ),
+        ]),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+//commint de prueba
