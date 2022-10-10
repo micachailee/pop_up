@@ -93,6 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
               backgroundColor: Colors.green,
             ),
           ]),
+
+          //CustomButton(text:"Aceptar",),
+
           MaterialButton(
             onPressed: _save,
             padding: const EdgeInsets.all(12),
