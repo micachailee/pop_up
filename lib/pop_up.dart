@@ -83,7 +83,7 @@ _PopUpContent(Color color, String text, Icon icon, String buttonText, Color butt
               Flexible(
                 flex: 3,
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(12, 25, 12, 20),
+                  padding: const EdgeInsets.fromLTRB(12, 25, 12, 20),
                   child: Text(
                     text,
                     textAlign: TextAlign.center,
