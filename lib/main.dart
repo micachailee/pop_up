@@ -1,7 +1,7 @@
 import 'package:desafio_grupal_2/pop_up.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_button.dart';
+import 'package:desafio_grupal_2/custom_button.dart';
 import 'enum_type.dart';
 import 'pop_up.dart';
 

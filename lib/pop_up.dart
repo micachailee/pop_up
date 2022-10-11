@@ -1,3 +1,4 @@
+import 'package:desafio_grupal_2/custom_button.dart';
 import 'package:desafio_grupal_2/enum_type.dart';
 import 'package:flutter/material.dart';
 
@@ -15,23 +16,29 @@ class _PopUpState extends State<PopUp> {
   late Color color;
   late Icon icon;
   late String text;
+  late String buttonText;
+  late Color buttonColor;
   _state(PopUpCardtype state) {
     switch (state) {
       case PopUpCardtype.incorrecto:
         color = Colors.red;
         icon = const Icon(Icons.warning_amber, color: Colors.red);
         text = "Esta por abandonar la partida. \n Después puede reanudarla";
+        buttonText = "Entendido";
+        buttonColor = Colors.red;
         break;
 
       case PopUpCardtype.correcto:
         color = Colors.teal;
         icon = const Icon(Icons.check, color: Colors.teal);
         text = "Se han guardado los cambios";
+        buttonText = "Aceptar";
+        buttonColor = Colors.teal;
         break;
       default:
         break;
     }
-    return _PopUpCard(color, icon, text, context);
+    return _PopUpCard(color, icon, text, buttonText, buttonColor, context);
   }
 
   @override
@@ -43,15 +50,15 @@ class _PopUpState extends State<PopUp> {
 }
 //OTRO ARCHIVO
 
-_PopUpCard(Color color, Icon icon, String text, context) {
+_PopUpCard(Color color, Icon icon, String text, String buttonText, Color buttonColor, context) {
   return AlertDialog(
     elevation: 0,
     backgroundColor: Colors.transparent,
-    content: (_PopUpContent(color, text, icon, context)),
+    content: (_PopUpContent(color, text, icon, buttonText, buttonColor, context)),
   );
 }
 
-_PopUpContent(Color color, String text, Icon icon, context) {
+_PopUpContent(Color color, String text, Icon icon, String buttonText, Color buttonColor, context) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(10),
     child: Container(
@@ -87,16 +94,14 @@ _PopUpContent(Color color, String text, Icon icon, context) {
                 flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(35, 12, 35, 12),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: double.infinity,
-                        width: double.infinity,
-                        child:
-                            const Text("Aceptar", textAlign: TextAlign.center),
-                      )),
+                  child: CustomButton(
+                    text: buttonText,
+                    backgroundColor: buttonColor,
+                    onTap: () {
+                Navigator.pop(context);
+                },
+
+                      ),
                 ),
               )
             ],
