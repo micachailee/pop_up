@@ -4,6 +4,16 @@ import 'package:flutter/material.dart';
 
 class PopUp extends StatefulWidget {
   PopUpCardtype state;
+  ///---INFO---
+  ///
+  /// Equipo: Chaile, Micaela ; Martearena, Iván ; Pistan, Renso
+  ///
+  /// Este widget consiste en una ventana emergente que se presenta centrada por encima del contenido
+  /// de la vista actual. Recibe por parámetro un estado (por el momento correcto/incorrecto) que determina
+  /// los colores y textos que se mostrarán,además de dos funciones, una al presionar el botón en la parte
+  /// inferior del widget y otra al cerrarlo.
+  ///
+  /// Los colores que se presentan estan establecidos por defecto, pueden cambiarse.
   PopUp({
     Key? key,
     required this.state,
